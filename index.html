@@ -62,7 +62,7 @@
 <br>注重了解客戶的需求<br></p>
                 <div class="item-right-bottom-wrap">
                     
-                    <div class="mbr-section-btn"><a class="btn btn-primary display-5" href="https://www.pro360.com.tw/service/77252" 
+                    <div class="mbr-section-btn"><a id="info_button" class="btn btn-primary display-5" href="https://www.pro360.com.tw/service/77252" 
 					style="background-color: #35b6ab !important;border:unset !important;    text-align: right; padding-right: 38px;">
 					了解更多</a></div>
                 </div>
@@ -88,6 +88,22 @@
 }
 </style>
   
+<script>
+document.getElementById("info_button").addEventListener("click", function(event) {
+  event.preventDefault(); // Stop immediate navigation
 
+  gtag('event', 'link_click', {
+    'event_category': 'engagement',
+    'event_label': 'Info Button',
+    'value': 1
+  });
+
+  // Delay navigation to give GA time to send the event
+  const url = this.href;
+  setTimeout(function() {
+    window.location.href = url;
+  }, 300); // 300ms is usually enough
+});
+</script>
 </body>
 </html>
